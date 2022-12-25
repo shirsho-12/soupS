@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "165662844414",
+    "project_id": "soups-winterland",
+    "storage_bucket": "soups-winterland.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165662844414:android:662ed5ae8bdb8093e0ccaf",
+        "android_client_info": {
+          "package_name": "com.example.soups"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165662844414-a3fiik0k1tvgee87vp09fka6suokiudc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh-__jwBOO7SzkPy0VCH-pP7aaPvRL594"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165662844414-a3fiik0k1tvgee87vp09fka6suokiudc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
