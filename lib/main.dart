@@ -45,7 +45,7 @@ void main() {
       ),
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       useMaterial3: true,
-      fontFamily: GoogleFonts.rubik().fontFamily,
+      fontFamily: GoogleFonts.montserrat().fontFamily,
       // swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
       // fontFamily: GoogleFonts.notoSans().fontFamily,
@@ -66,6 +66,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<AuthBloc>().add(const AuthEventInitialize());
+    return const HomeView();
     return BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
       if (state.isLoading) {
         LoadingScreen().show(
