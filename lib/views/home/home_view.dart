@@ -91,7 +91,8 @@ class HomeView extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {
-                MaterialPageRoute(builder: (context) => const LoginView());
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginView()));
               },
               icon: const Icon(Icons.login_outlined))
         ],
@@ -117,68 +118,71 @@ class HomeView extends StatelessWidget {
               ),
               scrollDirection: Axis.horizontal,
               itemCount: list.length,
-              itemBuilder: (BuildContext context, int index) => Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(kBorderRadius),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 3,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      list[index].image,
-                      fit: BoxFit.fill,
-                      height: double.infinity,
-                      width: double.infinity,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        // borderRadius: BorderRadius.circular(kBorderRadius),
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withOpacity(0.8),
+              itemBuilder: (BuildContext context, int index) => GestureDetector(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(kBorderRadius),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.2),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        list[index].image,
+                        fit: BoxFit.fill,
+                        height: double.infinity,
+                        width: double.infinity,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(kBorderRadius),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.transparent,
+                              Colors.black.withOpacity(0.8),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 20,
+                        left: 20,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              list[index].name,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              list[index].location,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      left: 20,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            list[index].name,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            list[index].location,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

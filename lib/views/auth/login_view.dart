@@ -133,6 +133,7 @@ class _LoginViewState extends State<LoginView> {
                                             BorderSide(color: Colors.grey))),
                                 child: TextField(
                                   controller: _email,
+                                  style: const TextStyle(color: Colors.black),
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "Email or Phone number",
@@ -145,6 +146,7 @@ class _LoginViewState extends State<LoginView> {
                                 child: TextField(
                                   controller: _password,
                                   obscureText: true,
+                                  style: const TextStyle(color: Colors.black),
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "Password",
