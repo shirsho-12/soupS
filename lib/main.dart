@@ -1,8 +1,8 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:soups/routes.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'loading/loading_screen.dart';
 import 'services/auth/bloc/auth.dart';
@@ -45,7 +45,7 @@ void main() {
       ),
       visualDensity: FlexColorScheme.comfortablePlatformDensity,
       useMaterial3: true,
-      fontFamily: GoogleFonts.montserrat().fontFamily,
+      fontFamily: GoogleFonts.roboto().fontFamily,
       // swapLegacyOnMaterial3: true,
       // To use the Playground font, add GoogleFonts package and uncomment
       // fontFamily: GoogleFonts.notoSans().fontFamily,

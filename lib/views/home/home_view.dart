@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soups/models/soup_kitchen.dart';
 import 'package:soups/views/auth/auth.dart';
 
 const kBorderRadius = 15.0;
@@ -14,6 +15,10 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<SoupKitchenObject> list = SoupKitchenObject.soupKitchenList;
+    List<SoupKitchenObject> staffingShortagesList =
+        SoupKitchenObject.staffingShortagesList;
+
     return Scaffold(
       drawer: ListView(
         padding: const EdgeInsets.symmetric(vertical: 80),
@@ -111,7 +116,7 @@ class HomeView extends StatelessWidget {
                 crossAxisSpacing: kSpacing,
               ),
               scrollDirection: Axis.horizontal,
-              itemCount: 8,
+              itemCount: list.length,
               itemBuilder: (BuildContext context, int index) => Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -125,15 +130,55 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Center(
-                  child: Text(
-                    '$index',
-                    style: TextStyle(
-                      color:
-                          kFontColorPallets[index % kFontColorPallets.length],
-                      fontSize: 20,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      list[index].image,
+                      fit: BoxFit.fill,
+                      height: double.infinity,
+                      width: double.infinity,
                     ),
-                  ),
+                    Container(
+                      decoration: BoxDecoration(
+                        // borderRadius: BorderRadius.circular(kBorderRadius),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(0.8),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      left: 20,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            list[index].name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            list[index].location,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -152,12 +197,25 @@ class HomeView extends StatelessWidget {
           const SizedBox(height: 20),
           Expanded(
               child: ListView.builder(
-            itemCount: 10,
+            itemCount: staffingShortagesList.length,
             itemBuilder: (context, index) => Card(
               child: ListTile(
-                title: Text("Soup Place $index"),
-                subtitle: Text("Soup Place $index"),
-                trailing: const Icon(Icons.arrow_forward_ios),
+                title: Text(staffingShortagesList[index].name),
+                subtitle: Row(children: [
+                  Text(staffingShortagesList[index].location),
+                ]),
+                trailing: SizedBox(
+                  width: 77,
+                  child: Row(
+                    children: [
+                      Text(staffingShortagesList[index].staff.toString()),
+                      const SizedBox(width: 5),
+                      const Icon(Icons.person),
+                      const SizedBox(width: 15),
+                      const Icon(Icons.arrow_forward_ios),
+                    ],
+                  ),
+                ),
               ),
             ),
           ))
